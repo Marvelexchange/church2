@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assemblies of God Church | City of Praise</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --primary-color: #172554;
+      --accent-color: #facc15;
+      --accent-hover: #e0b10f;
+      --dark-color: #1e293b;
+      --light-color: #fff8e7;
+      --text-color: #fff;
+      --font-family: 'Montserrat', sans-serif;
+      --transition: 0.4s ease;
+      --border-radius: 8px;
+      --shadow-color: rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--primary-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--accent-hover);
+      outline: none;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: var(--dark-color);
+      box-shadow: 0 4px 10px var(--shadow-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      width: 70px;
+      height: auto;
+    }
+
+    .title-box {
+      flex-grow: 1;
+      margin-left: 20px;
+      text-align: center;
+    }
+
+    .title-box h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      line-height: 1.2;
+    }
+
+    .title-box p {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #d7d7d7;
+      margin-top: 4px;
+    }
+
+    .manual-btn {
+      background: var(--accent-color);
+      color: var(--dark-color);
+      padding: 10px 22px;
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), transform 0.2s ease;
+      user-select: none;
+      box-shadow: 0 4px 6px var(--shadow-color);
+    }
+
+    .manual-btn:hover,
+    .manual-btn:focus {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Modal and Blur */
+
+    .blurred {
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+      transition: filter var(--transition);
+    }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 150;
+      animation: fadeIn var(--transition);
+    }
+
+    .modal {
+      background: var(--light-color);
+      padding: 30px 40px;
+      border-radius: var(--border-radius);
+      max-width: 360px;
+      width: 90%;
+      box-shadow: 0 8px 24px var(--shadow-color);
+      text-align: center;
+      animation: slideIn var(--transition);
+      color: var(--dark-color);
+    }
+
+    .modal h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+    }
+
+    .modal a {
+      display: block;
+      margin: 12px 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      padding: 10px 0;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .modal a:hover,
+    .modal a:focus {
+      background: var(--accent-color);
+      color: var(--dark-color);
+      border-color: var(--accent-color);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .modal button.close-btn {
+      margin-top: 25px;
+      background: var(--primary-color);
+      color: var(--accent-color);
+      padding: 10px 22px;
+      font-weight: 700;
+      border-radius: var(--border-radius);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: background var(--transition);
+    }
+
+    .modal button.close-btn:hover,
+    .modal button.close-btn:focus {
+      background: var(--accent-hover);
+      color: var(--dark-color);
+      outline: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hero Section */
+
+    .hero {
+      background: linear-gradient(90deg, var(--primary-color), var(--dark-color));
+      padding: 80px 20px 60px;
+      text-align: center;
+      box-shadow: inset 0 0 100px 15px rgba(0, 0, 0, 0.5);
+      flex-shrink: 0;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Weekly Activities Section */
+
+    section.schedule {
+      max-width: 1100px;
+      background: var(--light-color);
+      color: var(--primary-color);
+      margin: 40px auto;
+      padding: 50px 30px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 6px 20px var(--shadow-color);
+      flex-grow: 1;
+    }
+
+    section.schedule h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-align: center;
+      color: var(--primary-color);
+    }
+
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .activity {
+      background: var(--accent-color);
+      color: var(--primary-color);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 6px 15px rgba(250, 204, 21, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+
+    .activity:hover,
+    .activity:focus {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(250, 204, 21, 0.8);
+      outline: none;
+    }
+
+    /* Media Section */
+
+    section.media {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 30px;
+      text-align: center;
+    }
+
+    section.media h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--light-color);
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .media-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .media-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      color: var(--primary-color);
+      font-size: 1.7rem;
+      transition: background var(--transition), color var(--transition);
+      box-shadow: 0 6px 15px rgba(250, 204, 21, 0.5);
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .media-icons a:hover,
+    .media-icons a:focus {
+      background: var(--accent-hover);
+      color: var(--dark-color);
+      box-shadow: 0 10px 30px rgba(224, 177, 15, 0.85);
+      outline: none;
+    }
+
+    /* Footer */
+
+    footer {
+      background: var(--dark-color);
+      color: #cfcfcf;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 0.95rem;
+      box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.7);
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    footer .location {
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      section.schedule {
+        padding: 40px 20px;
+      }
+      .activities {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+      .media-icons a {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        text-align: center;
+      }
+      .title-box {
+        margin-left: 0;
+      }
+      .manual-btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+      section.schedule {
+        padding: 35px 15px;
+      }
+      section.media {
+        padding: 0 15px 40px;
+      }
+    }
+  </style>
+
+  <!-- Icons CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <header>
+    <img src="IMG_0253 (1).jpeg" alt="Assemblies of God Logo" class="logo" />
+    <div class="title-box">
+      <h1>Assemblies of God Church</h1>
+      <p>(City of Praise, Emene)</p>
+    </div>
+    <button class="manual-btn" id="manualBtn" aria-haspopup="true" aria-expanded="false" aria-controls="manualMenu">
+      Manual <i class="fa fa-caret-down" aria-hidden="true"></i>
+    </button>
+  </header>
+
+  <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="manualMenuTitle" tabindex="-1">
+    <div class="modal" id="manualMenu" role="menu" aria-label="Manual Options">
+      <h2 id="manualMenuTitle">Select a Group</h2>
+      <a href="schedule-selector.html" role="menuitem"  rel="noopener">Teens</a>
+      <a href="schedule-selector.html" role="menuitem"  rel="noopener">Teens Teacher</a>
+      <a href="schedule-selector.html" role="menuitem"  rel="noopener">Adult</a>
+      <a href="schedule-selector.html" role="menuitem"  rel="noopener">Adult (Igbo)</a>
+      <button class="close-btn" id="closeModalBtn">Close</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <h2>Worship With Us And Be Blessed!</h2>
+      <p>Join our weekly programs and grow spiritually in Christ.</p>
+    </section>
+
+    <section class="schedule" aria-label="Weekly Activities">
+      <h3>Weekly Activities</h3>
+      <div class="activities">
+        <div class="activity" tabindex="0">SUN - Sunday School: 8:00 AM – 9:00 AM</div>
+        <div class="activity" tabindex="0">TUE - Bible Class: 5:30 PM – 6:30 PM</div>
+        <div class="activity" tabindex="0">WED – Moment of Solution: 5:30 AM – 6:45 AM</div>
+        <div class="activity" tabindex="0">THU – Youth Fellowship: 6:00 PM – 7:00 PM</div>
+        <div class="activity" tabindex="0">FRI – Preparatory Class: 5:30 PM – 6:30 PM</div>
+        <div class="activity" tabindex="0">SAT – Evangelism: 5:00 PM – 6:30 PM</div>
+      </div>
+    </section>
+
+    <section class="media" aria-label="Social Media Links">
+      <h3>Connect With Us</h3>
+      <div class="media-icons">
+        <a href="https://facebook.com/assembliesofgodcityofpraise" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        </a>
+        <a href="https://youtube.com/channel/assembliesofgodcityofpraise" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+          <i class="fab fa-youtube" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/1234567890" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="https://twitter.com/assembliesofgod" target="_blank" rel="noopener" aria-label="Twitter" title="Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="https://instagram.com/assembliesofgod" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="location" aria-label="Address">
+      📍 21 Chief John Okwor Street, Emene
+    </span>
+    <span>&copy; 2025 Assemblies of God Church – City of Praise</span>
+  </footer>
+
+  <script>
+    const manualBtn = document.getElementById('manualBtn');
+    const modal = document.getElementById('modal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const contentToBlur = [document.querySelector('main'), document.querySelector('header'), document.querySelector('footer')];
+
+    function openMenu() {
+      modal.style.display = 'flex';
+      contentToBlur.forEach(el => el.classList.add('blurred'));
+      manualBtn.setAttribute('aria-expanded', 'true');
+      // Focus the first link inside modal for accessibility
+      const firstLink = modal.querySelector('a');
+      firstLink?.focus();
+    }
+
+    function closeMenu() {
+      modal.style.display = 'none';
+      contentToBlur.forEach(el => el.classList.remove('blurred'));
+      manualBtn.setAttribute('aria-expanded', 'false');
+      manualBtn.focus();
+    }
+
+    manualBtn.addEventListener('click', () => {
+      if (modal.style.display === 'flex') {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close modal when clicking outside modal content
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeMenu();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Schedule Selector</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #172554;
+      --accent-color: #facc15;
+      --accent-hover: #e0b10f;
+      --dark-color: #1e293b;
+      --light-color: #fff8e7;
+      --text-color: #fff;
+      --font-family: 'Montserrat', sans-serif;
+      --transition: 0.4s ease;
+      --border-radius: 8px;
+      --shadow-color: rgba(0, 0, 0, 0.25);
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--primary-color);
+      color: var(--text-color);
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: var(--light-color);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: 0 6px 20px var(--shadow-color);
+      color: var(--primary-color);
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 800;
+      color: var(--primary-color);
+      min-height: 2.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .item {
+      background: var(--accent-color);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(250, 204, 21, 0.5);
+      transition: transform 0.2s ease, background 0.3s ease;
+      user-select: none;
+    }
+
+    .item:hover {
+      background: var(--accent-hover);
+      transform: translateY(-4px);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .back-btn {
+      margin-bottom: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--primary-color);
+      color: var(--accent-color);
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: 700;
+      transition: background var(--transition);
+      user-select: none;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-hover);
+      color: var(--dark-color);
+    }
+
+    .fade-in {
+      animation: fadeInSlideIn 0.4s forwards;
+    }
+
+    .fade-out {
+      animation: fadeOutSlideOut 0.4s forwards;
+    }
+
+    @keyframes fadeInSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOutSlideOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    /* 404 Error Overlay */
+    .error-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+
+    .error-content {
+      background: #172554;
+      padding: 40px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      color: #fff;
+    }
+
+    .error-content h1 {
+      font-size: 3rem;
+      color: #facc15;
+      margin-bottom: 20px;
+    }
+
+    .error-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .error-content a {
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: 700;
+      color: #facc15;
+      text-decoration: none;
+      border: 2px solid #facc15;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .error-content a:hover {
+      background: #facc15;
+      color: #172554;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="main-title">Select a Group</h1>
+
+    <div id="group-container" class="grid"></div>
+
+    <div id="year-section" class="hidden">
+      <span class="back-btn" onclick="goBackToGroups()">← Back to Groups</span>
+      <h1>Select a Year</h1>
+      <div id="year-container" class="grid"></div>
+    </div>
+
+    <div id="month-section" class="hidden">
+      <span class="back-btn" onclick="goBackToYears()">← Back to Years</span>
+      <h1>Select a Month</h1>
+      <div id="month-container" class="grid"></div>
+    </div>
+
+    <div id="week-section" class="hidden">
+      <span class="back-btn" onclick="goBackToMonths()">← Back to Months</span>
+      <h1>Select a Week</h1>
+      <div id="week-container" class="grid"></div>
+    </div>
+  </div>
+
+  <div class="error-overlay" id="errorOverlay">
+    <div class="error-content">
+      <h1>404 - Page Not Found</h1>
+      <p>Oops! The page you're looking for doesn't exist.</p>
+      <a href="/schedule-selector.html">Go Back to Schedule</a>
+    </div>
+  </div>
+
+  <script>
+    const groups = [
+      { label: "Teens", value: "teens" },
+      { label: "Teens Teacher", value: "teens-teacher" },
+      { label: "Adult", value: "adult" },
+      { label: "Adult Teacher", value: "adult-teacher" }
+    ];
+    const years = [2025, 2026, 2027, 2028, 2029, 2030];
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    const weeks = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"];
+
+    let selectedGroup = "";
+    let selectedYear = "";
+    let selectedMonth = "";
+
+    const mainTitle = document.getElementById("main-title");
+    const groupContainer = document.getElementById("group-container");
+    const yearSection = document.getElementById("year-section");
+    const yearContainer = document.getElementById("year-container");
+    const monthSection = document.getElementById("month-section");
+    const monthContainer = document.getElementById("month-container");
+    const weekSection = document.getElementById("week-section");
+    const weekContainer = document.getElementById("week-container");
+    const errorOverlay = document.getElementById("errorOverlay");
+
+    function fadeOut(element, callback) {
+      element.classList.remove("fade-in");
+      element.classList.add("fade-out");
+      element.addEventListener("animationend", function handler() {
+        element.classList.add("hidden");
+        element.classList.remove("fade-out");
+        element.removeEventListener("animationend", handler);
+        if (callback) callback();
+      });
+    }
+
+    function fadeIn(element) {
+      element.classList.remove("hidden");
+      element.classList.add("fade-in");
+      element.addEventListener("animationend", function handler() {
+        element.classList.remove("fade-in");
+        element.removeEventListener("animationend", handler);
+      });
+    }
+
+    function showYears(group) {
+      selectedGroup = group;
+      mainTitle.textContent = `Group: ${group}`;
+      fadeOut(groupContainer, () => {
+        yearContainer.innerHTML = "";
+        years.forEach((year) => {
+          const div = document.createElement("div");
+          div.className = "item";
+          div.textContent = year;
+          div.onclick = () => showMonths(year);
+          yearContainer.appendChild(div);
+        });
+        fadeIn(yearSection);
+      });
+    }
+
+    function showMonths(year) {
+      selectedYear = year;
+      mainTitle.textContent = `Year: ${year} (${selectedGroup})`;
+      fadeOut(yearSection, () => {
+        monthContainer.innerHTML = "";
+        months.forEach((month) => {
+          const div = document.createElement("div");
+          div.className = "item";
+          div.textContent = month;
+          div.onclick = () => showWeeks(month);
+          monthContainer.appendChild(div);
+        });
+        fadeIn(monthSection);
+      });
+    }
+
+    async function showWeeks(month) {
+      selectedMonth = month;
+      mainTitle.textContent = `Month: ${month} (${selectedYear} - ${selectedGroup})`;
+      fadeOut(monthSection, () => {
+        weekContainer.innerHTML = "";
+        weeks.forEach((week, index) => {
+          const weekNumber = index + 1;
+          const div = document.createElement("div");
+          div.className = "item";
+          div.textContent = week;
+          const safeMonth = month.toLowerCase();
+          const url = `notes/${selectedGroup}/${selectedYear}/${safeMonth}/week${weekNumber}.html`;
+          div.onclick = () => checkAndRedirect(url);
+          weekContainer.appendChild(div);
+        });
+        fadeIn(weekSection);
+      });
+    }
+
+    async function checkAndRedirect(url) {
+      try {
+        const response = await fetch(url, { method: 'HEAD', cache: 'no-cache' });
+        if (response.ok) {
+          window.location.href = url;
+        } else {
+          showErrorOverlay();
+        }
+      } catch (error) {
+        showErrorOverlay();
+      }
+    }
+
+    function showErrorOverlay() {
+      errorOverlay.style.display = 'flex';
+      // Add event listener to close overlay when clicking the "Go Back" link
+      const goBackLink = errorOverlay.querySelector('a');
+      goBackLink.addEventListener('click', () => {
+        errorOverlay.style.display = 'none';
+        // Navigate back to the week section
+        fadeIn(weekSection);
+      });
+    }
+
+    function goBackToGroups() {
+      mainTitle.textContent = "Select a Group";
+      fadeOut(yearSection, () => fadeIn(groupContainer));
+    }
+
+    function goBackToYears() {
+      mainTitle.textContent = `Group: ${selectedGroup}`;
+      fadeOut(monthSection, () => fadeIn(yearSection));
+    }
+
+    function goBackToMonths() {
+      mainTitle.textContent = `Year: ${selectedYear} (${selectedGroup})`;
+      fadeOut(weekSection, () => fadeIn(monthSection));
+    }
+
+    // Initialize group buttons
+    groups.forEach(({ label, value }) => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.textContent = label;
+      div.onclick = () => showYears(value);
+      groupContainer.appendChild(div);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Note Viewer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #172554;
+      --accent-color: #facc15;
+      --accent-hover: #e0b10f;
+      --dark-color: #1e293b;
+      --light-color: #fff8e7;
+      --text-color: #fff;
+      --font-family: 'Montserrat', sans-serif;
+      --transition: 0.4s ease;
+      --border-radius: 8px;
+      --shadow-color: rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--primary-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .note-box {
+      background: var(--light-color);
+      color: var(--dark-color);
+      padding: 30px 25px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 24px var(--shadow-color);
+      max-width: 700px;
+      width: 100%;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .note-content {
+      overflow-y: auto;
+      flex-grow: 1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .note-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .note-content::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 6px;
+    }
+
+    .note-content h1,
+    .note-content h2,
+    .note-content h3,
+    .note-content h4,
+    .note-content h5 {
+      text-align: center;
+      margin-bottom: 20px; /* Increased line space between heading and paragraph */
+    }
+
+    .note-content p {
+      margin-bottom: 15px; /* Added spacing between paragraphs */
+    }
+
+    .done-btn {
+      background: var(--accent-color);
+      color: var(--dark-color);
+      border: none;
+      padding: 12px 22px;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      align-self: flex-end;
+      transition: background var(--transition);
+      box-shadow: 0 4px 6px var(--shadow-color);
+    }
+
+    .done-btn:hover,
+    .done-btn:focus {
+      background: var(--accent-hover);
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      .note-box {
+        padding: 20px;
+      }
+      .done-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="note-box">
+    <div class="note-content">
+      <h1>Adult Teacher</h1>
+      <p>July - December, 2025<br />July 13, 2025 — LESSON 2</p>
+      <h2>CONFRONTING SEXUAL SIN</h2>
+
+      <h3>Memory Verse</h3>
+      <p><strong>1 Corinthians 6:19–20 (KJV)</strong><br />
+      Know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? For ye are bought with a price: therefore glorify God in your body, and in your spirit, which are God's.</p>
+
+      <h3>Central Truth</h3>
+      <p>A local church must lovingly confront a member engaged in unrepentant sexual immorality for the good of the individual and the local church.</p>
+
+      <h3>The Lesson Outline</h3>
+      <h4>Do Not Excuse Immorality</h4>
+      <p><strong>A. Immorality Condoned</strong> — 1 Corinthians 5:1–2</p>
+      <p><strong>B. Discipline the Sinful Believer</strong> — 1 Corinthians 5:3–5</p>
+      <h4>Purify the Church</h4>
+      <p><strong>A. Remove the Immoral Believer</strong> — 1 Corinthians 5:6–8</p>
+      <p><strong>B. Accept Responsibility for Fellow Believers</strong> — 1 Corinthians 5:9–13</p>
+      <h4>Run from Sexual Immorality</h4>
+      <p><strong>A. Live as Changed People</strong> — 1 Corinthians 6:9–11</p>
+      <p><strong>B. Honour God with Your Body</strong> — 1 Corinthians 6:12–20</p>
+
+      <h3>Learning Objectives</h3>
+      <p>At the end of this lesson, students will be able to:</p>
+      <ul>
+        <li>Embrace biblical teachings about purity rather than accepting cultural norms.</li>
+        <li>Choose to remain sexually pure.</li>
+        <li>Show compassion, humility, and wisdom when reaching out to fellow Christians who are struggling with sexual sins.</li>
+      </ul>
+
+      <h3>Introducing the Lesson</h3>
+      <p>According to a 2019 survey conducted by the Pew Research Centre, half of US Christians say casual sex (“between consenting adults who are not in a committed romantic relationship”) is acceptable. Fifty-seven percent said sex between unmarried adults in a committed relationship is acceptable. Sexual mores in the church are shifting, and ignoring this issue leaves believers vulnerable to temptation and the heartache sexual sin brings.</p>
+
+      <h3>Scripture Passages</h3>
+      <h4>1 Corinthians 5</h4>
+      <p>It is reported commonly that there is fornication among you, and such fornication as is not so much as named among the Gentiles, that one should have his father's wife.<br />
+      And ye are puffed up, and have not rather mourned, that he that hath done this deed might be taken away from among you.<br />
+      In the name of our Lord Jesus Christ, when ye are gathered together, and my spirit, with the power of our Lord Jesus Christ,<br />
+      To deliver such an one unto Satan for the destruction of the flesh, that the spirit may be saved in the day of the Lord Jesus.<br />
+      But now I have written unto you not to keep company, if any man that is called a brother be a fornicator, or covetous, or an idolator, or a railer, or a drunkard, or an extortioner; with such an one no not to eat.<br />
+      For what have I to do to judge them also that are within? do not ye judge them that are without?<br />
+      But them that are without God judgeth. Therefore put away from among yourselves that wicked person.</p>
+      <h4>1 Corinthians 6</h4>
+      <p>13. Meats for the belly, and the belly for meats: but God shall destroy both it and them. Now the body is not for fornication, but for the Lord; and the Lord for the body.<br />
+      14. And God hath both raised up the Lord, and will also raise up us by his own power.<br />
+      15. Know ye not that your bodies are the members of Christ? shall I then take the members of Christ, and make them the members of an harlot? God forbid.<br />
+      18. Flee fornication. Every sin that a man doeth is without the body; but he that committeth fornication sinneth against his own body.</p>
+
+      <h3>Commentary and Application</h3>
+      <h4>Do Not Excuse Immorality</h4>
+      <h5>A. Immorality Condoned (1 Corinthians 5:1-2)</h5>
+      <p>In 1 Corinthians 5–6, Paul dealt with issues he had heard about in the church in Corinth, including a situation in which a believer was in a sexual relationship with "his father's wife" (5:1, KJV). The New Living Translation reflects the traditional understanding that this man had either married or begun a sexual relationship with his stepmother. Presumably, the man's father was out of the picture, either through death or divorce. Paul did not spell out the exact circumstances, since the church would have been familiar with the situation, but he described the sin as a form of sexual immorality that even people of the world condemned (verse 1). Paul was troubled by both the sin and the other believers' reaction to it.<br />
+      Paul held to the scriptural teaching that incest was strictly forbidden (Leviticus 18:8; Deuteronomy 22:30; 27:20), pointing out that even pagans rejected such behaviour (1 Corinthians 5:1). The believers in the Corinthian church should have been heartbroken by their fellow believer's immoral actions and taken steps to discipline him. Yet they were proud of their tolerance and enlightenment, likely misguided by false teaching. Paul's instruction to remove the man from the church (verse 2) would serve two purposes:<br />
+      Believers would be reminded of the deceitful and destructive nature of sin and examine their own hearts. We all need to remember how God saved us from sin's bondage so we can live in the freedom of His grace.<br />
+      The man living in sin would repent and be restored, reminding the other believers of God’s desire to restore sinners to right relationship with Him. That is the ultimate goal of the Lord’s discipline.</p>
+      <h5>Questions for Application</h5>
+      <p>Why do you think Christians often struggle to respond appropriately when someone in the church is engaged in ongoing sin?<br />
+      How can discipline be an extension of love and mercy?</p>
+      <h5>B. Discipline the Sinful Believer (1 Corinthians 5:3–5)</h5>
+      <p>Paul challenged the believers to remove the man from their fellowship because of his sinful lifestyle (1 Corinthians 5:2). Though Paul was not present among them, he still had a spiritual connection to this church as its founder. Acting in the authority of the Lord Jesus, Paul explained the church was to call a meeting and expel the man from their fellowship. The hope was that he would experience the godly sorrow that leads to repentance (2 Corinthians 7:8–10). Paul underscored the source of the church’s authority to take this action. Christ is the Head of the Church, which is the temple of the Holy Spirit. The church in Corinth was to act under the authority of its Head and under the leadership of the Spirit.<br />
+      The man in this situation had not simply slipped up, giving in to temptation. Instead, he had chosen to engage in an ongoing sexually immoral relationship. If he were allowed to continue in his sin and remain in fellowship with the church, his salvation would be at stake, he could lead others astray, and he would dishonour the church and the name of Christ.<br />
+      The instruction concerning delivering the man “unto Satan for the destruction of the flesh” (1 Corinthians 5:5, KJV) has been understood by some to mean the man would suffer physically due to his sinful behaviour, which would lead him to repentance. Another understanding is that it just means expelling him from the fellowship of believers. This would move him from the sphere of godly community to the sphere of Satan, which is ungodly community. This expulsion would ideally lead to repentance and reinclusion into the Christian community. However one interprets this phrase, it is clear the motive behind the disciplinary action is restoration to a right relationship with the Lord and fellowship with the church.<br />
+      Even today, the goal of church discipline is restoration, not condemnation. Some people reject the idea of church discipline, viewing it as cultish control and judgement. Others who place great value on personal freedom see it as unloving and condemning. However, Christians should view church discipline through the biblical lens of the nature of sin and the life-changing power of the gospel. Sin results in destruction and death. But the gospel changes people by the power of God so they sin less as they are transformed into His likeness (2 Corinthians 3:16–18). Discipline is motivated by concern for the wayward believer and the witness of the church.</p>
+      <h5>Questions for Application</h5>
+      <p>How can a believer’s ongoing sinful lifestyle affect the witness of the church?<br />
+      What steps can believers take to avoid habitual sin?</p>
+      <h4>Purify the Church</h4>
+      <h5>A. Remove the Immoral Believer (1 Corinthians 5:6-8)</h5>
+      <p>Paul chided the Corinthian believers for forgetting what the gospel is all about: “Your boasting about this is terrible” (1 Corinthians 5:6). Using Passover imagery, Paul likened the destructive nature of sin to yeast. Just as a little yeast can leaven a whole batch of dough, unchallenged sin can spread throughout a church, causing other believers to justify their own sinful lifestyles.<br />
+      If the Corinthian church allowed the sinful man to remain in the church, others could be led to sin and the church’s purity would be compromised. As our Passover Lamb, Jesus sacrificed His life to pay the penalty of sin on our behalf. His sacrifice brings people to life when they put their faith in Him. They become new creations in Him. Or as Paul explained, they are “like a fresh batch of dough made without yeast” (verse 7).<br />
+      Followers of Christ must remember that we have been set free. We are no longer slaves to sin but can live as the holy people of God. In verse 8, Paul called believers to continually celebrate this new life with sincerity (pure motives) and truth (pure actions). None of us is sinless. But because of our new life in Jesus, we should sin less. Our growing desire should be to please God in every aspect of our lives—heart, soul, mind, and strength.</p>
+      <h5>Questions for Application</h5>
+      <p>How should the knowledge of our identity in Christ lead to holy living?<br />
+      Why do some Christians struggle with the ideal of Christian perfection?</p>
+      <h5>B. Accept Responsibility for Fellow Believers (1 Corinthians 5:9-13)</h5>
+      <p>First Corinthians 6:9-13 indicates that Paul had written an earlier letter to the Corinthians, instructing them on interacting with people who engaged in sexual sins. This teaching was especially needed in Corinth, which was known for rampant sexual immorality, yet it seems Paul’s teaching had been misunderstood.<br />
+      Rather than telling Christians not to interact with immoral unbelievers—“you would have to leave this world to avoid people like that” (verse 10)—Paul told them to avoid interacting with people who claimed to be believers but lived sinful lifestyles (verse 11).<br />
+      Paul’s command against eating with these self-proclaimed believers probably included any social setting, including the church’s regular love feasts. Sharing meals, particularly in those days, implied acceptance and camaraderie. Paul did not want believers to condone fellow Christians’ sin or be considered guilty by association.<br />
+      Paul’s final comments about this situation were clear: God will judge unbelievers, but Christians have a responsibility to deal with believers engaged in ongoing sin. The goal is repentance and restoration.<br />
+      Paul quotes God’s command to the Israelites that they remove those who do evil from their midst (Deuteronomy 17:7). Based on this scriptural principle, Paul insisted that the sexually immoral man in the Corinthian church be removed from the fellowship.</p>
+      <h5>Questions for Application</h5>
+      <p>How can Christians discern if an immoral person in the church is a struggling believer or a false believer?<br />
+      How can removing an immoral believer from church fellowship lead that person to repentance and restoration?</p>
+      <h4>Run from Sexual Immorality</h4>
+      <h5>A. Live as Changed People (1 Corinthians 6:9–11)</h5>
+      <p>Like the believers in Corinth, some people today think the rules apply to everyone but themselves. Perhaps it comes from the tendency to focus on God's love and mercy while downplaying His holiness and justice. But being part of God's kingdom requires living to please Him. Unless ungodly people are changed and made righteous through Jesus, they have no hope of entering the kingdom of God.<br />
+      Paul's list of wrongdoers in 1 Corinthians 6:9–10 may have been drawn from his observations while living and ministering in Corinth. The people engaged in these sinful lifestyles were lost, separated from God. Paul admonished the Corinthians not to be deceived, but to confront these sinful behaviours creeping into the church.<br />
+      Verse 11 reminds us of all God has done for us through the gospel, which is the power of God for salvation to all who believe (Romans 1:16). By calling on the name of Jesus and submitting to the Holy Spirit’s conviction and guidance, we find salvation and learn to live as God’s children.<br />
+      We must continually be mindful of the deceitfulness of sin. Instead of allowing sin to creep back into our lives, we must not justify or excuse behaviour that does not please or honour God. Instead, we ask the Holy Spirit to examine our hearts and we respond humbly to His leading.</p>
+      <h5>Questions for Application</h5>
+      <p>How did your life change when you became a Christian?<br />
+      Why does ungodly behaviour keep people from inheriting the kingdom of God?</p>
+      <h5>B. Honour God with Your Body (1 Corinthians 6:12–20)</h5>
+      <p>Paul wrapped up this section of 1 Corinthians by reemphasising his main idea: Flee from sexual sin so you can honour God with your body. He refuted the argument some Corinthian believers seemed to hold that a person’s body and spirit were not connected and did not influence each other. Some behaviours, even permissible ones, simply do not lead to good results. Perhaps Paul was drawing from Jesus’ teaching that anyone who continues in a sin is a slave to sin (John 8:34).<br />
+      God created people with bodies and spirits, so we are physical and spiritual beings. God cares about our bodies, as evidenced by the future bodily resurrection He has promised for believers (1 Corinthians 6:13–14). As such, Christians must honour God with our bodies. Sexual immorality clearly dishonours God, and its negative consequences affect both our bodies and our spirits.<br />
+      Paul further argued that Christians become part of the body of Christ at regeneration—that a mystical, spiritual union is formed between believers and the Lord (verse 15). Sexual immorality tears apart a believer’s spiritual intimacy with God.<br />
+      If Paul were writing this letter today, he would have used bold, underlined, capital letters in verse 18: RUN FROM SEXUAL SIN! Engaging in habitual sin shows ingratitude for what God has done. He sent Jesus to redeem us from sin and to make us His own. He sent His Spirit to live in us, making us temples of the Holy Spirit. Our bodies belong to God, and we should use our bodies to honour Him.</p>
+      <h5>Questions for Application</h5>
+      <p>What practical steps can believers take to flee from sexual immorality?<br />
+      How can Christians protect themselves from worldly influences that could lead to sexual sin?</p>
+
+      <h3>Call to Discipleship</h3>
+      <p>Christians in the local church must lovingly confront those who are engaged in unrepentant sexual immorality for the good of the individual and the local church. It’s easy to say; it’s hard to do. We must start with a biblical understanding of sin, the human condition, and God’s expectations of those who say they follow Jesus.<br />
+      Unrepentant immorality of any kind in the life of a professing Christian should not be excused or tolerated. Fellow believers have a responsibility to deal with the offending Christian for that person’s sake, the well-being of the local body, and the reputation of the gospel among unbelievers. The proper steps should be taken with compassion and care. The goal is for the sinning believer to repent and be restored to right relationship with God and the local church fellowship.</p>
+
+      <h3>Ministry in Action</h3>
+      <ul>
+        <li>Embrace biblical teachings about sexual purity rather than believing and living by the norms of our culture.</li>
+        <li>Make good choices that will help you remain sexually pure.</li>
+        <li>Memorise Ephesians 5:3–5 to arm yourself against immorality.</li>
+        <li>Take responsibility to help a fellow Christian who is struggling with sexual sin.</li>
+        <li>Show compassion, humility, and wisdom, being careful to follow the Holy Spirit’s guidance.</li>
+      </ul>
+
+      <h3>Daily Bible Readings</h3>
+      <ul>
+        <li>Mon: Laws against Sexual Immorality — Leviticus 18:19–30</li>
+        <li>Tue: King David Judged for Sexual Immorality — 2 Samuel 12:7–15</li>
+        <li>Wed: The Wisdom of Sexual Purity — Proverbs 5:15–23</li>
+        <li>Thu: Avoid Adultery — Matthew 5:27–32</li>
+        <li>Fri: Abstain from Sexual Immorality — 1 Thessalonians 4:1–8</li>
+        <li>Sat: Live Consistent with the Gospel — 1 Timothy 1:8–11</li>
+      </ul>
+    </div>
+    <button class="done-btn" onclick="goBack()">Done</button>
+  </div>
+
+  <script>
+    function goBack() {
+      history.back(); // Navigate back to the previous page
+    }
+  </script>
+</body>
+</html>
